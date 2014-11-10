@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 resources :products
 # get 'products'             => 'products#index'
 # post 'products'            => 'products#create'
