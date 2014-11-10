@@ -10,9 +10,9 @@
 	</th>
 	<% @products.each do |product| %>
 		<tr>
-			<td><%= product.name %></td>
-			<td><%=product.description %></td>
-			<td><%=product.price_in_cents %></td>
+			<td><%= link_to product.name, product_path(product) %></td>
+			<td><%= product.description %></td>
+			<td><%= product.formatted_price %></td>
 		</tr>
 	<% end %>
 </table>
