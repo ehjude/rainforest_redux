@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-resources :products
-resources :users, only: [:new, :create]
+resources :products do
+  resources :reviews, only: [:show, :create, :destroy]
+end
+
+resources :users, only: [:new, :create] 
 resources :sessions, only: [:new, :create, :destroy]
 # get 'products'             => 'products#index'
 # post 'products'            => 'products#create'
@@ -11,6 +14,10 @@ resources :sessions, only: [:new, :create, :destroy]
 # patch 'products/:id'       => 'products#update'
 # delete 'products/:id'      => 'products#destroy'
 
+# you can have custom routes, based on the resources
+# resources :products do
+#   get 'edit' => 'users/edit', as 'change_user'
+# end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
