@@ -7,15 +7,25 @@ class ProductsController < ApplicationController
     else 
       Product.all 
     end
+    @products = @products.order('products.created_at ASC').page(params[:page])
 
     respond_to do |format|
       format.html
       format.js
     end
 
-    # if request.xhr?
-    #   render @products
-    # end
+    # OVERVIEW OF PARAMS
+    # METHOD 1
+    # /products/:id
+    # /products/2
+
+    # METHOD 2
+    # /products?search=foo&page=1&fabio=awesome
+
+    # this is the same as:
+    # params = {:search => "foo", :page => "1", :fabio => "awesome"}
+    # to extract data searched for, we use params[:search]
+
   end
 
   def show

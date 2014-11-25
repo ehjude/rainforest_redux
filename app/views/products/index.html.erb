@@ -7,7 +7,24 @@
 	<%= submit_tag "Search" %>
 <% end %>
 
-<div id="products">
-	<%= render partial: "products", locals: {products: @products} %>
-</div>
+
+<h3><small><%= page_entries_info @products %></small></h3>
+
+<table>
+	<th>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+		</tr>
+	</th>
+	<tbody id="products">
+		<%= render @products %>
+		<%# THIS IS THE SAME AS %>
+		<%#= render :partial => "product", :collection => @products %>
+		<%# Render the partial _product, set product as a local variable, and iterate through the collection @products %>
+	</tbody>
+
+	<%= paginate @products %>
+</table>
 
