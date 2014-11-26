@@ -3,11 +3,13 @@ class ProductsController < ApplicationController
 
   def index
   	@products = if params[:search]
-      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%").order('products.created_at DESC')
     else 
-      Product.all 
-    end
-    @products = @products.order('products.created_at ASC').page(params[:page])
+      Product.order('products.created_at DESC') 
+    end 
+    @products = @products.page(params[:page])
+    
+    # @products = @products.order('products.created_at ASC').page(params[:page])
 
     respond_to do |format|
       format.html
