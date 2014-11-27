@@ -20,9 +20,6 @@
 	</th>
 	<tbody id="products">
 		<%= render @products %>
-		<%# THIS IS THE SAME AS %>
-		<%#= render :partial => "product", :collection => @products %>
-		<%# Render the partial _product, set product as a local variable, and iterate through the collection @products %>
 	</tbody>
 
 	<%= paginate @products %>

@@ -1,11 +1,8 @@
-// This is for search
-
-
 <% if(params[:search]) %>
 	$('#products').html("<%= j(render @products)%>");	
 <% else %>
-	$('#products').append('<%= j render(@products) %>');	
+	$('#products').append("<%= j render(@products) %>");	
 <% end %>
 
-$('.pagination').replaceWith('<%= j paginate(@products) %>');
+$('.pagination').replaceWith("<%= j paginate(@products) %>");
 
